@@ -1,0 +1,7 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "include": [
+    "src",
+    "src/declaration.d.ts", "App.tsx",
+  ]
+}
