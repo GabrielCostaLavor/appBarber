@@ -8,6 +8,7 @@ import Search from "../../views/Search";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet } from "react-native";
+import HomeNavegation from "../../routes/HomeNavegation";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,13 +18,14 @@ export function Navegation(){
             <Tab.Navigator 
             screenOptions={
               {
+                headerShown: false,
                 tabBarShowLabel: false,
-                tabBarStyle:{height: 55, backgroundColor: "rgba(0, 0, 0, 0.50)"}
+                tabBarStyle:{height: 55, backgroundColor: "#1C1C1E"}
               }
             }
           
             >
-                <Tab.Screen name="Home"  component={Home} options={
+                <Tab.Screen name="Home"  component={HomeNavegation} options={
                   {
                     headerShown: false, tabBarIcon(props) {
                   if (props.focused) {

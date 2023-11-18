@@ -1,27 +1,49 @@
-import { Dimensions, Image, StyleSheet, Text } from "react-native";
+import { Dimensions, Image, Pressable, StyleSheet, Text } from "react-native";
 import { View } from "react-native";
-import logo from '../../assets/logo.png';
+import logo from '../../assets/WGLOGO.png';
+import Icon from 'react-native-vector-icons/FontAwesome6';
+import { useNavigation } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
-export default function Header(){
+interface Props {
+    isGoBack?: boolean
+}
+
+export default function Header({isGoBack}: Props){
+    const navegation = useNavigation<any>()
     return (
-        <View style={styles.containerLogo}>
-            {/* <Image source={logo} style={styles.logo}/> */}
-            <Text style={styles.text}><Text style={{color: "#8429D8"}}>App</Text> Barber</Text>
+        <View style={isGoBack && {position: 'absolute', top: 0, left: 0, flex: 10, backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 10, width: windowWidth, opacity: 0.9}}>
+            <View style={styles.headerWrapper}>
+                {isGoBack && (
+                    <Pressable style={styles.goBack} onPress={() => navegation.goBack()}> 
+                        <Icon
+                            name="arrow-left"
+                            size={windowWidth * 0.07}
+                            color="#fff" 
+                        />
+                    </Pressable>
+                )}
+                <View style={styles.containerLogo}>
+                    <Image source={logo} style={styles.logo} /> 
+                    {/* <Text style={styles.text}><Text style={{color: "#8429D8"}}>App</Text> Barber</Text> */}
+                </View>
+            </View>
         </View>
+
     )
 }
 
 const styles = StyleSheet.create({
+    header:{
+
+    },
     logo: {
-        height: windowWidth * 0.17,
-        width: windowWidth * 0.17,
-        maxHeight: 60,
-        maxWidth: 60,
-        minHeight: 40,
-        minWidth: 40
+        height: windowWidth * 0.08,
+        width: windowWidth * 0.35,
+    },
+    headerWrapper:{
+        position: 'relative'
     },
     text:{
         fontSize: 30,
@@ -32,7 +54,15 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.50)',
-        paddingVertical: 3
+        paddingVertical: 10,
+    },
+    goBack: {
+        position: 'absolute',
+        marginLeft: 5,
+        padding: 8,
+        top: 0,
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
     }
 })
