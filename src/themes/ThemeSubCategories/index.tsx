@@ -8,11 +8,11 @@ interface themeProps{
     children: ReactNode
 }
 
-export default function ThemeDefault({children}:themeProps){
+export default function ThemeSubCategories({children}:themeProps){
     return(
         <SafeAreaView style={globalStyles.wrapper}>
             <ScrollView>
-                <Header />
+                <Header isGoBack={true}/>
                 <View style={globalStyles.container}>
                     {children}
                 </View>
