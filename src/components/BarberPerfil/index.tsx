@@ -8,6 +8,7 @@ import Stars from "../Stars";
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import DetailsBarber from "./DetailsBarber";
 import ServicesBarber from "./ServicesBarber";
+import Scheduling from "./Scheduling";
 
 interface ParamsData {
     id: string;
@@ -124,7 +125,7 @@ const BarberPerfil: React.FC = () => {
                                     />) 
                                     : modal === 'services' ? 
                                         <ServicesBarber service={barber.service}/>
-                                        : <Text>Agendamento</Text>
+                                        : <Scheduling />
                                     }
                                     
                                 </View>
